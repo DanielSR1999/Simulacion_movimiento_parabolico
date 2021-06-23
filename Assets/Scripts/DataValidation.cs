@@ -10,6 +10,8 @@ public class DataValidation : MonoBehaviour
     int numForTrue = 3;
     public Canvas Input;
     public Text warningText;
+    public GameObject[] objectsToEnable;
+
     public void DeleteSign(InputField _inputField)
     {
         if(_inputField.text.Contains("-"))
@@ -46,10 +48,19 @@ public class DataValidation : MonoBehaviour
         if(acumulator>=numForTrue)
         {
             Input.enabled = false;
+            EnableSimulation();
         }
         else
         {
             warningText.enabled = true;
         }
     }
+    public void EnableSimulation()
+    {
+        foreach(GameObject objects in objectsToEnable)
+        {
+            objects.SetActive(true);
+        }
+    }
+
 }
